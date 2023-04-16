@@ -12,8 +12,6 @@
 
 ### Association
 has_many :items
-has_many :comments
-has_many :favorites
 has_many :orders
 
 ## items テーブル
@@ -23,12 +21,12 @@ has_many :orders
 | description        | text       | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
-| category           | references | null: false, foreign_key: true |  categoryからdelivery_dayは、active_hashを使用
-| condition          | references | null: false, foreign_key: true |
-| brand              | references | foreign_key: true              |
-| postage            | references | null: false, foreign_key: true |  
-| area               | references | null: false, foreign_key: true |
-| delivery_day       | references | null: false, foreign_key: true |
+| category_id        | integer    | null: false, foreign_key: true |  categoryからdelivery_dayは、active_hashを使用
+| condition_id       | integer    | null: false, foreign_key: true |
+| brand_id           | integer    | foreign_key: true              |
+| postage_id         | integer    | null: false, foreign_key: true |  
+| area_id            | integer    | null: false, foreign_key: true |
+| delivery_day_id    | integer    | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
@@ -55,7 +53,7 @@ has_one :address
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |
-| prefecture         | references | null: false, foreign_key: true | active_hash
+| prefecture_id      | integer    | null: false, foreign_key: true | active_hash
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |
 | building_name      | string     |                                |
@@ -66,81 +64,6 @@ has_one :address
 belongs_to :order
 belongs_to :prefecture
 
-## prefecture テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| prefecture         | string     | null: false                    |
-
-### Association
-has_many :address
 
 
-## condition テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| condition          | string     | null: false                    |
 
-### Association
-has_many :items
-
-## category テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-
-### Association
-has_many :items
-
-## brands テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-
-### Association
-has_many :items
-
-## postage テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| postage            | string     | null: false                    |
-
-### Association
-has_many :items
-
-## area テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| area               | string     | null: false                    |
-
-### Association
-has_many :items
-
-## delivery_day テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| day                | string     | null: false                    |
-
-### Association
-has_many :items
-
-## comments テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| comment            | text       | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
-
-### Association
-belongs_to :user
-belongs_to :item
-
-## favorite テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| favorite           | string     |                                |
-| user               | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
-
-### Association
-belongs_to :user
-belongs_to :item
