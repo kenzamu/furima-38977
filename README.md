@@ -21,21 +21,19 @@ has_many :orders
 | description        | text       | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
-| category_id        | integer    | null: false, foreign_key: true |  categoryからdelivery_dayは、active_hashを使用
-| condition_id       | integer    | null: false, foreign_key: true |
-| brand_id           | integer    | foreign_key: true              |
-| postage_id         | integer    | null: false, foreign_key: true |  
-| area_id            | integer    | null: false, foreign_key: true |
-| delivery_day_id    | integer    | null: false, foreign_key: true |
+| category_id        | integer    | null: false                    |  categoryからdelivery_dayは、active_hashを使用
+| condition_id       | integer    | null: false                    |
+| postage_id         | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| delivery_day_id    | integer    | null: false                    |
 
 ### Association
 belongs_to :user
 has_one :order
 belongs_to :category    
 belongs_to :condition        
-belongs_to :brand     
 belongs_to :postage          
-belongs_to :area             
+belongs_to :prefecture
 belongs_to :delivery_day
 
 ## orders テーブル
@@ -53,7 +51,7 @@ has_one :address
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |
-| prefecture_id      | integer    | null: false, foreign_key: true | active_hash
+| prefecture_id      | integer    | null: false                    | active_hash
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |
 | building_name      | string     |                                |
