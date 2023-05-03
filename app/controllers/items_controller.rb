@@ -40,8 +40,8 @@ before_action :set_item, only: [:edit, :show, :update, :destroy]
   def destroy
     if @item.user_id == current_user.id
       @item.destroy
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   private
