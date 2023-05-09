@@ -6,20 +6,20 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品情報入力' do
-    context '商品情報入力がうまくいく時' do 
+    context '商品情報入力がうまくいく時' do
       it '全ての値が正しく入力されていれば出品できること' do
         expect(@item).to be_valid
       end
     end
-    context '商品情報の入力がうまくいかない時' do 
+    context '商品情報の入力がうまくいかない時' do
       it 'nameが空だと出品できない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
 
       it 'descriptionが空だと出品できない' do
-        @item.description = ""
+        @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが空だと出品できない' do
-        @item.price = ""
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
@@ -63,19 +63,20 @@ RSpec.describe Item, type: :model do
       it 'priceが300以下だと出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
 
       it 'priceが9999999以上だと出品できない' do
-        @item.price = 99999999
+        @item.price = 99_999_999
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
 
       it 'priceが全角数字だと出品できない' do
-        @item.price = "２０００"
+        @item.price = '２０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters", "Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters',
+                                                      'Price is out of setting range')
       end
 
       it 'imageが空だと保存できない' do
@@ -87,7 +88,7 @@ RSpec.describe Item, type: :model do
       it 'userが紐づいていないと保存できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
