@@ -175,6 +175,12 @@
   margin-bottom: 2vh;
 }
 
+.comment-btn input{
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+}
+
 .comment-flag {
   display: flex;
   justify-content: center;
@@ -205,3 +211,17 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.comment-list{
+  width: 40%;
+  background-color: #FFFFFF;
+  margin-top: 30px;
+}
+
+.comments{
+  border: solid 1px;
+  padding: 0 10px;
+  margin: 20px 15px;
+  border-radius: 5px;
+}
+
